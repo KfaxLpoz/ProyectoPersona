@@ -183,12 +183,17 @@
                 <div class="col-sm-10"> 
                             <asp:TextBox ID="txtCP" runat="server" 
                                CssClass="form-control" placeholder="Codigo Postal" oncopy="return false"
-                             onpaste="return false" required></asp:TextBox>
+                             onpaste="return false" onkeypress="return numbersonly(event);"
+                        MinLength="5" MaxLength="5" required></asp:TextBox>
                         <div>
                         <asp:RequiredFieldValidator ID="rfvCodigoPostal" runat="server"
                             ErrorMessage="El campo Codigo Postal es obligatorio" ControlToValidate="txtCP" CssClass="form-control alert-danger text-center" ></asp:RequiredFieldValidator>
                      </div> 
-
+                                          <asp:RegularExpressionValidator ID="reCorreo" runat="server"
+                          ErrorMessage="por favor ingresa un Un codigo postal valido puede ser del 01000 al 99998"
+                          ControlToValidate="txtCP" ValidationExpression="0[1-9][0-9]{3}|[1-4][0-9]{4}|9[0-9][0-8]{3}"
+                          CssClass="form-control alert-danger text-center"></asp:RegularExpressionValidator>
+                    
                 </div>
                           
             </div>
@@ -197,12 +202,17 @@
                 <asp:Label ID="lblRFC" runat="server" Text="RFC:" CssClass="control-label col-sm-2"></asp:Label>
                 <div class="col-sm-10"> 
                                 <asp:TextBox ID="txtRFC" runat="server" placeholder="RFC" 
-                                 CssClass="form-control" oncopy="return false"
-                             onpaste="return false" required></asp:TextBox>
+                                 CssClass="form-control text-uppercase" oncopy="return false"
+                             onpaste="return false" MinLength="12" MaxLength="13" required></asp:TextBox>
                      <div>
                         <asp:RequiredFieldValidator ID="rfvRFC" runat="server"
                             ErrorMessage="El campo RFC es obligatorio" ControlToValidate="txtRFC" CssClass="form-control alert-danger text-center" ></asp:RequiredFieldValidator>
                      </div>
+                     <asp:RegularExpressionValidator ID="reRFC" runat="server"
+                          ErrorMessage="por favor ingresa un Un RFC valido ej: XAXX010101000 o XEXX010101000"
+                          ControlToValidate="txtRFC" ValidationExpression="^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$"
+                          CssClass="form-control alert-danger text-center"></asp:RegularExpressionValidator>
+                    
                 </div>
                              
             </div>
