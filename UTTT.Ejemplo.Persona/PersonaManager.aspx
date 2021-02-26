@@ -163,7 +163,7 @@
                 <div class="col-sm-10"> 
                         <asp:TextBox ID="txtCorreo" runat="server" 
                             placeholder="Correo electronico ej prueba@prueba.com" 
-                             CssClass="form-control" oncopy="return false"
+                             CssClass="form-control" onkeypress="return correo(event);" oncopy="return false"
                              onpaste="return false" required></asp:TextBox>
                   <div>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
@@ -174,6 +174,23 @@
                           ControlToValidate="txtCorreo" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
                           CssClass="form-control alert-danger text-center"></asp:RegularExpressionValidator>
                   </div>
+
+                                        <script language="javascript">
+                                            function correo(e) {
+                                                var unicode = e.charCode ? e.charCode : e.KeyCode
+                                                if (unicode != 45 && unicode != 46 && unicode != 64 && unicode != 241 && unicode != 209 && unicode != 95) {
+                                                    if (unicode != 65 && unicode != 90) {
+                                                        if (unicode < 48 || unicode > 57) {
+                                                            if (unicode < 97 || unicode > 122) {
+                                                            return false
+
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </script>
+
                 </div>
                         
             </div>
@@ -202,7 +219,7 @@
                 <asp:Label ID="lblRFC" runat="server" Text="RFC:" CssClass="control-label col-sm-2"></asp:Label>
                 <div class="col-sm-10"> 
                                 <asp:TextBox ID="txtRFC" runat="server" placeholder="RFC" 
-                                 CssClass="form-control text-uppercase" oncopy="return false"
+                                 CssClass="form-control text-uppercase" oncopy="return false" onkeypress="return RFCFun(event);"
                              onpaste="return false" MinLength="12" MaxLength="13" required></asp:TextBox>
                      <div>
                         <asp:RequiredFieldValidator ID="rfvRFC" runat="server"
@@ -214,7 +231,20 @@
                           CssClass="form-control alert-danger text-center"></asp:RegularExpressionValidator>
                     
                 </div>
-                             
+                        <script language="javascript">
+                               function RFCFun(e) {
+                                       var unicode = e.charCode ? e.charCode : e.KeyCode
+                                           if (unicode != 241 && unicode != 209) {
+                                                if (unicode != 65 && unicode != 90) {
+                                                   if (unicode < 48 || unicode > 57) {
+                                                     if (unicode < 97 || unicode > 122) {
+                                                        return false
+                                                     }
+                                                   }
+                                                }
+                                           }
+                               }
+                        </script>
             </div>
 
             <div class="form-group">
