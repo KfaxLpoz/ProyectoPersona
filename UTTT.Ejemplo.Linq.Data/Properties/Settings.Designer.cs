@@ -33,5 +33,16 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
                 return ((string)(this["PersonaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PersonaFrancisco.mssql.somee.com;Initial Catalog=PersonaFrancisco;Per" +
+            "sist Security Info=True;User ID=kfaxlopz_SQLLogin_1;Password=z95wkbn95o")]
+        public string DataSourceConnectionString {
+            get {
+                return ((string)(this["DataSourceConnectionString"]));
+            }
+        }
     }
 }
